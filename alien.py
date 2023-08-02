@@ -4,18 +4,19 @@
 # Mi solución
 
 def verifyingAlienDictionary(words: list, order: str):
-    _order = order.split()
-    # Primero validar la longitud de las palabras
+    _order = [letra for letra in order]
     for i in range(len(words) - 1):
         if len(words[i]) > len(words[i + 1]):
             return False
-        # if 
+        j = 0
+        while j < len(words[i]) and j < len(words[i + 1]):
+            if _order.index(words[i][j]) > _order.index(words[i + 1][j]):
+                return False
+            j += 1
+    return True
 
-
-    print(_order)
-    print(words)
 
 
 if __name__ == "__main__":
-    print(verifyingAlienDictionary(["conocer", "cono"],
+    print(verifyingAlienDictionary(["cono", "conocer"],
                                    "hlabcdefgijkmnopqrstuvwxyz"))
